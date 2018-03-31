@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>bil-notification</title>
+	<script src="js/bill.notification.js"></script>
+	<link rel="stylesheet" href="css/bill.notification.css">
+	<style type="text/css">
+
+		html{
+			font-family: calibri, sans-serif;
+		}
+
+		.btn {
+			border: none; /* Remove borders */
+			color: white; /* Add a text color */
+			padding: 6px 12px; /* Add some padding */
+			cursor: pointer; /* Add a pointer cursor on mouse-over */
+			margin: 10px 0px;
+			outline: none;
+			border-radius: 4px;
+			line-height: 1.42857143;
+		}
+
+		.btn-success {border: 1px solid #398439;background-color: #449d44;} /* Green */
+		.btn-success:hover {background-color: #3d8f3d;}
+		.btn-success:active {background-color: #367d36;}
+
+		.btn-info {border: 1px solid #46b8da; background-color: #5bc0de;} /* Blue */
+		.btn-info:hover {background: #31b0d5;}
+		.btn-info:active {background: #279bbe;}
+
+		.btn-warning {border: 1px solid #d58512; background-color: #ec971f;} /* Orange */
+		.btn-warning:hover {background: #e68a00;}
+		.btn-warning:active {background: #cc7a00;}
+
+		.btn-danger {border: 1px solid #ac2925; background-color: #f44336;} /* Red */ 
+		.btn-danger:hover {background: #da190b;}
+		.btn-danger:active {background: #c2160a;}
+
+		.btn-default {border: 1px solid #adadad; background-color: #fff; color: black;} /* Gray */ 
+		.btn-default:hover {background: #ddd;}
+		.btn-default:active {background: #cccccc;}
+		
+		h1.title{
+			text-align: center;
+		}
+
+		.form-input {
+			display: block;
+			width: 100%;
+			/*height: 34px;*/
+			padding: 6px 12px;
+			font-size: 14px;
+			line-height: 1.42857143;
+			color: #555;
+			background-color: #fff;
+			background-image: none;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+			box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+			-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+			-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+			transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+			font-family: inherit;
+		}
+
+		.form-input:focus {
+			border-color: #66afe9;
+			outline: 0;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+			box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+		}
+
+		hr {
+			border: 0;
+			height: 0;
+			border-top: 1px solid rgba(0, 0, 0, 0.1);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+		}
+
+	</style>
+</head>
+<body>
+
+	<h1 class="title">Bil-Notification</h1>
+	<hr />
+	<div>
+		<b>Notification Title</b>
+		<br /><br />
+		<input type="text" name="title" id="notificationTitle" class="form-input" style="width: 97%;" value="Title">
+		<br />
+		<b>Notification Message</b>
+		<br /><br />
+		<textarea id="notificationText" rows="4" class="form-input" style="width: 97%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id enim lacus. Aliquam hendrerit nisi in auctor dignissim. Quisque urna odio, laoreet sit amet diam a, rutrum egestas orci</textarea>
+		<div style="width: 25%; display: inline-block;">
+			<br />
+			<b>Notification Delay</b>
+			<br /><br />
+			<input id="delayTime" type="number" name="quantity" min="3000" max="500000" step="1000" class="form-input" style="width: 50%;" value="30000">
+		</div>
+		<div style="width: 25%; display: inline-block;">
+			<br />
+			<b>New On Top</b>
+			<br /><br />
+			<input id="onTop" type="checkbox" class="form-input" style="width: initial; display: initial; transform: scale(1.6, 1.6);" checked="true" onchange="toggleOnTop(this.checked)">
+		</div>
+	</div>
+	<br />
+	<button onclick="showNotification('success',document.getElementById('notificationTitle').value,document.getElementById('notificationText').value,document.getElementById('delayTime').value, onTop)" class="btn btn-success">
+		Show Success Notification
+	</button>
+
+	<button onclick="showNotification('danger',document.getElementById('notificationTitle').value,document.getElementById('notificationText').value,document.getElementById('delayTime').value, onTop)" class="btn btn-danger">
+		Show Danger Notification
+	</button>
+
+	<button onclick="showNotification('warning',document.getElementById('notificationTitle').value,document.getElementById('notificationText').value,document.getElementById('delayTime').value, onTop)" class="btn btn-warning">
+		Show Warning notification
+	</button>
+
+	<button onclick="showNotification('info',document.getElementById('notificationTitle').value,document.getElementById('notificationText').value,document.getElementById('delayTime').value, onTop)" class="btn btn-info">
+		Show Info Notification
+	</button>
+
+	<button onclick="clearNotifications()" class="btn btn-default">Clear All Notifications</button>
+	<br />
+	<button onclick="createSnackBar(document.getElementById('notificationText').value,document.getElementById('delayTime').value)" class="btn btn-default">Create Snackbar</button>
+
+	<script type="text/javascript">
+		var onTop = true;
+		
+		function toggleOnTop(checkboxStatus) {
+			onTop = checkboxStatus;
+		}
+
+	</script>
+</body>
+</html>
