@@ -1,7 +1,9 @@
 # Bill-notification #
 
 Bill-notification is a JavaScript library that can be used to add notification feature to a web page.
-Live [demo](https://bilal-elchami.github.io/bill-notification/ "Bill notification Demo")
+
+Live [demo](https://bilal-elchami.github.io/bill-notification/ "Bill notification demo")
+
 ### What is this repository for? ###
 
 * Non-blocking web notification
