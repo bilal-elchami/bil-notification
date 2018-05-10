@@ -14,12 +14,12 @@ Live [demo](https://bilal-elchami.github.io/bil-notification/ "Bil notification 
 
 * Link the js file 
 ```
-<script src="js/bill.notification.js"></script>
+<script src="js/bil.notification.js"></script>
 ```
 
 * Link the css file
 ```
-<link rel="stylesheet" href="css/bill.notification.css">
+<link rel="stylesheet" href="css/bil.notification.css">
 ```
 
 * Create a notification in your script as follow
