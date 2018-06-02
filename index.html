@@ -4,7 +4,9 @@
 	<title>bil-notification</title>
 	<script src="js/bil.notification.js"></script>
 	<link rel="stylesheet" href="css/bil.notification.css">
-	<style type="text/css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- 	<style type="text/css">
 
 		html{
 			font-family: calibri, sans-serif;
@@ -79,61 +81,62 @@
 			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 		}
 
-	</style>
+	</style> -->
 </head>
 <body>
-
-	<h1 class="title">Bil-Notification</h1>
-	<hr />
-	<div>
-		<b>Notification Title</b>
-		<br /><br />
-		<input type="text" name="title" id="notificationTitle" class="form-input" style="width: 97%;" value="Title">
+	<div class="container">
+		<h1 class="text-center">Bil-Notification</h1>
+		<hr />
+		<div>
+			<b>Notification Title</b>
+			
+			<input type="text" name="title" id="notificationTitle" class="form-control" style="width: 97%;" value="Title">
+			<br />
+			<b>Notification Message</b>
+			<br /><br />
+			<textarea id="notificationText" rows="4" class="form-control" style="width: 97%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id enim lacus. Aliquam hendrerit nisi in auctor dignissim. Quisque urna odio, laoreet sit amet diam a, rutrum egestas orci</textarea>
+			<div style="width: 25%; display: inline-block;">
+				<br />
+				<b>Notification Delay</b>
+				<br /><br />
+				<input id="delayTime" type="number" name="quantity" min="3000" max="500000" step="1000" class="form-control" style="width: 50%;" value="30000">
+			</div>
+			<div style="width: 25%; display: inline-block;">
+				<br />
+				<b>New On Top</b>
+				<br /><br />
+				<input id="onTop" type="checkbox" class="form-input" style="width: initial; display: initial; transform: scale(1.6, 1.6);" checked="true" onchange="toggleOnTop(this.checked)">
+			</div>
+		</div>
 		<br />
-		<b>Notification Message</b>
-		<br /><br />
-		<textarea id="notificationText" rows="4" class="form-input" style="width: 97%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id enim lacus. Aliquam hendrerit nisi in auctor dignissim. Quisque urna odio, laoreet sit amet diam a, rutrum egestas orci</textarea>
-		<div style="width: 25%; display: inline-block;">
-			<br />
-			<b>Notification Delay</b>
-			<br /><br />
-			<input id="delayTime" type="number" name="quantity" min="3000" max="500000" step="1000" class="form-input" style="width: 50%;" value="30000">
-		</div>
-		<div style="width: 25%; display: inline-block;">
-			<br />
-			<b>New On Top</b>
-			<br /><br />
-			<input id="onTop" type="checkbox" class="form-input" style="width: initial; display: initial; transform: scale(1.6, 1.6);" checked="true" onchange="toggleOnTop(this.checked)">
-		</div>
+		<button onclick="showNotification('success',document.getElementById('notificationTitle').value,document.getElementById('notificationText').value,document.getElementById('delayTime').value, onTop)" class="btn btn-success">
+			Show Success Notification
+		</button>
+
+		<button onclick="showNotification('danger',document.getElementById('notificationTitle').value,document.getElementById('notificationText').value,document.getElementById('delayTime').value, onTop)" class="btn btn-danger">
+			Show Danger Notification
+		</button>
+
+		<button onclick="showNotification('warning',document.getElementById('notificationTitle').value,document.getElementById('notificationText').value,document.getElementById('delayTime').value, onTop)" class="btn btn-warning">
+			Show Warning notification
+		</button>
+
+		<button onclick="showNotification('info',document.getElementById('notificationTitle').value,document.getElementById('notificationText').value,document.getElementById('delayTime').value, onTop)" class="btn btn-info">
+			Show Info Notification
+		</button>
+
+		<button onclick="clearNotifications()" class="btn btn-default">Clear All Notifications</button>
+		<br />
+		<button onclick="createSnackBar(document.getElementById('notificationText').value,document.getElementById('delayTime').value)" class="btn btn-default">Create Snackbar</button>
+
+		<script type="text/javascript">
+			var onTop = true;
+			
+			function toggleOnTop(checkboxStatus) {
+				onTop = checkboxStatus;
+			}
+
+		</script>
 	</div>
-	<br />
-	<button onclick="showNotification('success',document.getElementById('notificationTitle').value,document.getElementById('notificationText').value,document.getElementById('delayTime').value, onTop)" class="btn btn-success">
-		Show Success Notification
-	</button>
-
-	<button onclick="showNotification('danger',document.getElementById('notificationTitle').value,document.getElementById('notificationText').value,document.getElementById('delayTime').value, onTop)" class="btn btn-danger">
-		Show Danger Notification
-	</button>
-
-	<button onclick="showNotification('warning',document.getElementById('notificationTitle').value,document.getElementById('notificationText').value,document.getElementById('delayTime').value, onTop)" class="btn btn-warning">
-		Show Warning notification
-	</button>
-
-	<button onclick="showNotification('info',document.getElementById('notificationTitle').value,document.getElementById('notificationText').value,document.getElementById('delayTime').value, onTop)" class="btn btn-info">
-		Show Info Notification
-	</button>
-
-	<button onclick="clearNotifications()" class="btn btn-default">Clear All Notifications</button>
-	<br />
-	<button onclick="createSnackBar(document.getElementById('notificationText').value,document.getElementById('delayTime').value)" class="btn btn-default">Create Snackbar</button>
-
-	<script type="text/javascript">
-		var onTop = true;
-		
-		function toggleOnTop(checkboxStatus) {
-			onTop = checkboxStatus;
-		}
-
-	</script>
 </body>
 </html>
